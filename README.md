@@ -9,3 +9,6 @@ Tools used:
 -   Redux Saga
 -   UI material
 -   Styled Components
+
+Demo:
+[click here to see](https://marvel-api-search.herokuapp.com/)
