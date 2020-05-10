@@ -31,7 +31,6 @@ const MarvelIcon = styled(MarvelSVG)`
     display: block;
 `
 
-
 const Home: React.FC = () => {
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)

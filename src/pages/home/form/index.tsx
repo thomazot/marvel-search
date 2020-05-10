@@ -1,8 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { TextField } from '@material-ui/core'
+import { TextField, Box } from '@material-ui/core'
+import styled from 'styled-components'
 import Upload from 'components/upload'
 import useDebounce from 'helps/useDebounce'
 import { CharacterContext } from 'helps/context'
+
+const Image = styled.div`
+    position: relative;
+`
+
+const BoxUpload = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+`
 
 export default function Form() {
     const { character, setUpdated } = useContext(CharacterContext)
@@ -48,28 +59,31 @@ export default function Form() {
 
     return (
         <form action="">
-            <img src={image} alt={character.name} />
-            <div><Upload onChange={handleImage} /></div>
-            <div>
+            <Image>
+                <img src={image} alt={character.name} />
+                <BoxUpload><Upload onChange={handleImage} /></BoxUpload>
+            </Image>
+            <Box m={2}>
                 <TextField
                     name="name"
                     id="name"
                     label="Name"
                     onChange={(e) => setName(e.target.value)}
                     value={name}
+                    fullWidth
                 />
 
-            </div>
-            <div>
+            </Box>
+            <Box m={2}>
                 <TextField
                     name="description"
                     id="description"
                     label="Description"
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
+                    fullWidth
                 />
-
-            </div>
+            </Box>
         </form>
     )
 }

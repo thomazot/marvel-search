@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
+import PhotoCamera from '@material-ui/icons/PhotoCamera'
 
 interface InputProps {
     name ?: string
@@ -10,6 +11,7 @@ interface InputProps {
 const Input = styled.input`
     display: none;
 `
+
 
 export default function Upload(props: InputProps) {
     const { onChange, ...other } = props
@@ -38,9 +40,9 @@ export default function Upload(props: InputProps) {
                 {...other}
             />
             <label htmlFor="upload-file">
-                <Button variant="contained" color="primary" component="span">
-                    Upload
-                </Button>
+                <IconButton component="span">
+                    <PhotoCamera />
+                </IconButton>
             </label>
         </>
     )
