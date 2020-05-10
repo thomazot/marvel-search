@@ -10,6 +10,7 @@ import LoaderImg from 'assets/images/loader.gif'
 import styled from 'styled-components'
 import { CharacterRequestContext } from 'helps/context'
 import { ReactComponent as MarvelSVG } from 'assets/svg/marvel.svg'
+import { INITIAL_CHARACTER } from 'stores/characters/initial'
 import HomeList from './list'
 import HomeDetail from './detail'
 
@@ -30,32 +31,12 @@ const MarvelIcon = styled(MarvelSVG)`
     display: block;
 `
 
-const INIT_DETAIL = {
-    id: 0,
-    name: '',
-    description: '',
-    modified: '',
-    thumbnail: {
-        path: '',
-        extension: '',
-    },
-    resourceURI: '',
-    series: {
-        available: 0,
-        collectionURI: '',
-        items: [{
-            resourceURI: '',
-            name: '',
-        }],
-        returned: 0,
-    },
-}
 
 const Home: React.FC = () => {
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
     const [term, setTerm] = useState('')
-    const [detail, setDetail] = useState(INIT_DETAIL)
+    const [detail, setDetail] = useState(INITIAL_CHARACTER)
 
     const characters: CharactersState = useSelector(
         (state: ApplicationState) => state.characters,

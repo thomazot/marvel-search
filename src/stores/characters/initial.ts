@@ -26,6 +26,9 @@ export const INITIAL_CHARACTER: Character = {
         available: 0,
         collectionURI: '',
         returned: 0,
-        items: [],
+        items: [{
+            resourceURI: '',
+            name: '',
+        }],
     },
 }
