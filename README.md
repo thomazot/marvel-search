@@ -9,6 +9,7 @@ Tools used:
 -   Redux Saga
 -   UI material
 -   Styled Components
+-   React Testing Library
 
 Demo:
 [click here to see](https://marvel-api-search.herokuapp.com/)

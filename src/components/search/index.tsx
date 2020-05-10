@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { InputBase } from '@material-ui/core'
 import Styled from 'styled-components'
-import useDebounce from 'helps/useDebounce'
+import useDebounce from '../../helps/useDebounce'
 
 const Form = Styled.div`
     display: flex;
@@ -23,8 +23,8 @@ const InputBaseCustom = Styled(InputBase)`
     }
 `
 type Props = {
-    onChange(value: string): void
-    isSearch: boolean
+    onChange ?: (value: string) => void
+    isSearch ?: boolean
 }
 const Search = ({ onChange, isSearch = false }: Props) => {
     const [searchTerm, setSearchTerm] = useState('')
@@ -33,7 +33,7 @@ const Search = ({ onChange, isSearch = false }: Props) => {
     useEffect(
         () => {
             if (debounceSearchTerm && debounceSearchTerm.length > 1) {
-                onChange(debounceSearchTerm)
+                if (onChange) onChange(debounceSearchTerm)
             }
         },
         [debounceSearchTerm, onChange],
@@ -41,7 +41,11 @@ const Search = ({ onChange, isSearch = false }: Props) => {
 
     return (
         <Form>
-            <InputBaseCustom onChange={(event) => setSearchTerm(event.target.value)} placeholder="Qual seu heroi?" />
+            <InputBaseCustom
+                aria-label="search-input"
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder="Qual seu heroi?"
+            />
         </Form>
     )
 }
